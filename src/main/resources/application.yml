@@ -1,3 +1,6 @@
+server:
+  port: 9999
+
 spring:
   application:
     name: '@project.name@'
@@ -5,12 +8,21 @@ spring:
     active: local
   config:
     import: optional:configserver:http://${CONFIG_SERVER_HOST:localhost}:8888
+    request-read-timeout: 10
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
 
 management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
   endpoint:
     health:
       show-details: always
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: gateway

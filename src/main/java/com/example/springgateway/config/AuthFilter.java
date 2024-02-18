@@ -1,6 +1,5 @@
 package com.example.springgateway.config;
 
-import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
@@ -13,7 +12,6 @@ import reactor.core.publisher.Mono;
 
 @RefreshScope
 @Component
-@RequiredArgsConstructor
 public class AuthFilter implements GatewayFilter {
 
     Logger logger = LoggerFactory.getLogger(AuthFilter.class);
